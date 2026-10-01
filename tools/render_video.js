@@ -66,6 +66,7 @@ async function video(fps, workers) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   execFileSync('ffmpeg', ['-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', list, '-i', path.join(WORK, 'narration.wav'),
     '-c:v', 'copy', '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', out], { stdio: 'inherit' });
+  execFileSync('python3', [path.join(__dirname, 'add_chapters.py'), out], { stdio: 'inherit' });
   console.log('->', out);
 }
 

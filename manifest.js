@@ -7,9 +7,76 @@ window.MANIFEST = {
   "A": "Allan Lo 講師",
   "R": "助教 阿拉蕾"
  },
+ "chapters": [
+  {
+   "id": "intro",
+   "title": "開場",
+   "sub": "課程地圖・全景流程・三個控制措施",
+   "color": "#7c4dff",
+   "slides": [
+    "s01",
+    "s02",
+    "s03",
+    "s04"
+   ]
+  },
+  {
+   "id": "p1",
+   "title": "PART 1 ISMS 作業重點",
+   "sub": "5.7 情資・8.8 五步驟・5.37 程序・案例①",
+   "color": "#2f6fde",
+   "slides": [
+    "s05",
+    "s06",
+    "s07",
+    "s08",
+    "s09",
+    "s10",
+    "s11",
+    "s12"
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "PART 2 稽核查核重點",
+   "sub": "漏洞追到底・查核清單・抽樣技巧・案例②",
+   "color": "#ff9330",
+   "slides": [
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17"
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "PART 3 常見的缺失",
+   "sub": "八大缺失・缺失寫法・案例③",
+   "color": "#ef4b55",
+   "slides": [
+    "s18",
+    "s19",
+    "s20",
+    "s21"
+   ]
+  },
+  {
+   "id": "end",
+   "title": "收尾",
+   "sub": "小測驗・三句口訣",
+   "color": "#22b59a",
+   "slides": [
+    "s22",
+    "s23",
+    "s24"
+   ]
+  }
+ ],
  "slides": [
   {
    "id": "s01",
+   "title": "封面",
    "lines": [
     {
      "s": "A",
@@ -45,6 +112,7 @@ window.MANIFEST = {
   },
   {
    "id": "s02",
+   "title": "課程地圖",
    "lines": [
     {
      "s": "A",
@@ -80,6 +148,7 @@ window.MANIFEST = {
   },
   {
    "id": "s03",
+   "title": "全景流程圖",
    "lines": [
     {
      "s": "A",
@@ -127,6 +196,7 @@ window.MANIFEST = {
   },
   {
    "id": "s04",
+   "title": "三個控制措施",
    "lines": [
     {
      "s": "A",
@@ -168,6 +238,7 @@ window.MANIFEST = {
   },
   {
    "id": "s05",
+   "title": "PART 1 開場",
    "lines": [
     {
      "s": "A",
@@ -185,6 +256,7 @@ window.MANIFEST = {
   },
   {
    "id": "s06",
+   "title": "5.7 威脅情資三層次",
    "lines": [
     {
      "s": "A",
@@ -220,6 +292,7 @@ window.MANIFEST = {
   },
   {
    "id": "s07",
+   "title": "情資來源與四要件",
    "lines": [
     {
      "s": "A",
@@ -255,6 +328,7 @@ window.MANIFEST = {
   },
   {
    "id": "s08",
+   "title": "威脅情資作業循環",
    "lines": [
     {
      "s": "A",
@@ -290,6 +364,7 @@ window.MANIFEST = {
   },
   {
    "id": "s09",
+   "title": "8.8 弱點管理五步驟",
    "lines": [
     {
      "s": "A",
@@ -337,6 +412,7 @@ window.MANIFEST = {
   },
   {
    "id": "s10",
+   "title": "修補時限與補償措施",
    "lines": [
     {
      "s": "A",
@@ -378,6 +454,7 @@ window.MANIFEST = {
   },
   {
    "id": "s11",
+   "title": "5.37 運作程序要素",
    "lines": [
     {
      "s": "A",
@@ -413,6 +490,7 @@ window.MANIFEST = {
   },
   {
    "id": "s12",
+   "title": "案例① SSL VPN 漏洞",
    "lines": [
     {
      "s": "A",
@@ -454,6 +532,7 @@ window.MANIFEST = {
   },
   {
    "id": "s13",
+   "title": "PART 2 開場",
    "lines": [
     {
      "s": "A",
@@ -471,6 +550,7 @@ window.MANIFEST = {
   },
   {
    "id": "s14",
+   "title": "一條漏洞追到底",
    "lines": [
     {
      "s": "A",
@@ -518,6 +598,7 @@ window.MANIFEST = {
   },
   {
    "id": "s15",
+   "title": "稽核員 Checklist",
    "lines": [
     {
      "s": "A",
@@ -553,6 +634,7 @@ window.MANIFEST = {
   },
   {
    "id": "s16",
+   "title": "兩個抽樣技巧",
    "lines": [
     {
      "s": "A",
@@ -588,6 +670,7 @@ window.MANIFEST = {
   },
   {
    "id": "s17",
+   "title": "案例② Log4Shell",
    "lines": [
     {
      "s": "A",
@@ -629,6 +712,7 @@ window.MANIFEST = {
   },
   {
    "id": "s18",
+   "title": "PART 3 開場",
    "lines": [
     {
      "s": "A",
@@ -646,6 +730,7 @@ window.MANIFEST = {
   },
   {
    "id": "s19",
+   "title": "常見八大缺失",
    "lines": [
     {
      "s": "A",
@@ -705,6 +790,7 @@ window.MANIFEST = {
   },
   {
    "id": "s20",
+   "title": "不符合事項怎麼寫",
    "lines": [
     {
      "s": "A",
@@ -740,6 +826,7 @@ window.MANIFEST = {
   },
   {
    "id": "s21",
+   "title": "案例③ EOL 風險接受",
    "lines": [
     {
      "s": "A",
@@ -775,6 +862,7 @@ window.MANIFEST = {
   },
   {
    "id": "s22",
+   "title": "小測驗",
    "lines": [
     {
      "s": "A",
@@ -816,6 +904,7 @@ window.MANIFEST = {
   },
   {
    "id": "s23",
+   "title": "三句口訣總結",
    "lines": [
     {
      "s": "A",
@@ -857,6 +946,7 @@ window.MANIFEST = {
   },
   {
    "id": "s24",
+   "title": "感謝聆聽",
    "lines": [
     {
      "s": "A",

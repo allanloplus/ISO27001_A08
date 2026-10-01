@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --page:#0e1530; --ctl:#18213f; --ctl-ink:#e8edff;
+  --page:#0e1530; --ctl:#18213f; --ctl-ink:#e8edff; --panel:#121a36; --panel-2:#1c2650; --panel-line:rgba(255,255,255,.12); --panel-mute:#a9b4d6;
   --blue:#2f6fde; --blue-l:#dbe8ff; --teal:#22b59a; --teal-l:#d4f5ec;
   --orange:#ff9330; --orange-l:#ffe9d2; --red:#ef4b55; --red-l:#ffe0e2;
   --yellow:#ffd23f; --purple:#7c4dff; --ink:#1f2a44; --muted:#56627f;
@@ -16,6 +16,7 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --page:#0b1128; } }
 :root[data-theme="dark"]{ --page:#0b1128; }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;height:100%;background:var(--page);overflow:hidden}
 body{font-family:"Noto Sans TC","WenQuanYi Zen Hei","Microsoft JhengHei","PingFang TC",sans-serif;color:var(--ink)}
 svg *{transform-box:fill-box;transform-origin:center}
@@ -124,10 +125,41 @@ b.hl{color:var(--red)}
 #bar i{position:absolute;top:-3px;width:2px;height:16px;background:rgba(255,255,255,.45)}
 #time{font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
 #start{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;background:rgba(8,12,30,.55)}
-#start button{font-family:inherit;font-size:28px;font-weight:900;padding:18px 40px;border-radius:999px;border:0;background:linear-gradient(90deg,#ff9330,#ef4b55);color:#fff;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#start #go{font-family:inherit;font-size:28px;font-weight:900;padding:18px 40px;border-radius:999px;border:0;background:linear-gradient(90deg,#ff9330,#ef4b55);color:#fff;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35)}
 #start p{color:#fff;text-align:center;margin:14px 0 0;font-size:15px;opacity:.85}
-body.render #ctl,body.render #start{display:none}
-@media (max-width:640px){#ctl{flex-wrap:wrap}#bar{flex-basis:100%;order:-1}#time{display:none}}
+#start{overflow-y:auto;padding:24px 16px;align-items:flex-start}
+#start .wrap{width:min(920px,100%);text-align:center;margin:auto}
+#start h1{color:#fff;font-size:clamp(26px,4.5vw,44px);font-weight:900;margin:0 0 6px;text-wrap:balance}
+#start .lead{color:var(--panel-mute);margin:0 0 20px;font-size:16px}
+#start .chs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:22px;text-align:left}
+.chcard{text-align:left;font-family:inherit;cursor:pointer;background:var(--panel);color:var(--ctl-ink);border:1px solid var(--panel-line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.chcard:hover,.chcard:focus-visible{background:var(--panel-2);outline:2px solid var(--c);outline-offset:1px}
+.chcard .k{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--panel-mute);font-variant-numeric:tabular-nums}
+.chcard .k i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chcard b{font-size:17px;line-height:1.3}
+.chcard span.s{font-size:13px;color:var(--panel-mute);line-height:1.4}
+#chap{position:fixed;top:0;right:0;bottom:0;width:min(360px,92vw);z-index:70;background:var(--panel);color:var(--ctl-ink);border-left:1px solid var(--panel-line);display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.35);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#chap header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--panel-line)}
+#chap header b{font-size:18px}
+#chap header button{background:none;border:0;color:var(--ctl-ink);font-size:22px;cursor:pointer;width:36px;height:36px;border-radius:8px}
+#chap header button:hover{background:var(--panel-2)}
+#chap .list{overflow-y:auto;padding:8px 10px 18px}
+#chap h3{margin:14px 6px 6px;font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+#chap h3 i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+#chap h3 small{margin-left:auto;color:var(--panel-mute);font-weight:400;font-variant-numeric:tabular-nums}
+#chap .it{display:flex;gap:10px;width:100%;text-align:left;font-family:inherit;font-size:15px;background:none;border:0;color:var(--ctl-ink);padding:8px 10px 8px 24px;border-radius:8px;cursor:pointer}
+#chap .it:hover,#chap .it:focus-visible{background:var(--panel-2)}
+#chap .it.cur{background:var(--panel-2);box-shadow:inset 3px 0 0 var(--c)}
+#chap .it .n{color:var(--panel-mute);width:22px;flex:none;font-variant-numeric:tabular-nums}
+#chap .it .t{flex:1;min-width:0}
+#chap .it .tm{color:var(--panel-mute);font-variant-numeric:tabular-nums}
+#bar .seg{position:absolute;top:0;bottom:0;opacity:.35;border-radius:6px}
+#bar i.ch{width:3px;background:#fff;opacity:.9}
+#tip{position:absolute;bottom:22px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--panel-line);color:var(--ctl-ink);font-size:13px;padding:4px 8px;border-radius:6px;white-space:nowrap;pointer-events:none}
+#chname{font-size:13px;color:var(--panel-mute);white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+body.render #ctl,body.render #start,body.render #chap{display:none}
+@media (max-width:640px){#ctl{flex-wrap:wrap}#bar{flex-basis:100%;order:-1}#time,#chname{display:none}}
+@media (prefers-reduced-motion:reduce){#ctl{transition:none}}
 
 /* ---------- slide-specific ---------- */
 .cover-title{position:absolute;left:0;right:0;top:150px;text-align:center}
@@ -752,11 +784,18 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
 <div id="sub"></div>
 </div>
 
-<div id="start"><div style="text-align:center"><button id="go">▶ 開始上課</button><p>空白鍵 播放/暫停 ・ ← → 換頁 ・ C 字幕 ・ F 全螢幕</p></div></div>
+<div id="start"><div class="wrap">
+  <h1>威脅與弱點管理</h1>
+  <p class="lead">ISO/IEC 27001:2022・Allan Lo 講師 × 助教阿拉蕾</p>
+  <button id="go">▶ 從頭開始上課</button>
+  <div class="chs" id="chs"></div>
+  <p>空白鍵 播放/暫停 ・ ← → 換頁 ・ 1–5 跳章節 ・ M 章節選單 ・ C 字幕 ・ F 全螢幕</p>
+</div></div>
+<aside id="chap" hidden aria-label="章節選單"><header><b>課程章節</b><button id="chClose" title="關閉" aria-label="關閉章節選單">×</button></header><div class="list" id="chList"></div></aside>
 <div id="ctl">
-  <button id="bPrev" title="上一頁">⏮</button><button id="bPlay" title="播放/暫停">▶</button><button id="bNext" title="下一頁">⏭</button>
-  <div id="bar"><div id="fill"></div></div>
-  <span id="time">0:00 / 0:00</span>
+  <button id="bMenu" title="章節選單 (M)">☰ 章節</button><button id="bPrev" title="上一頁">⏮</button><button id="bPlay" title="播放/暫停">▶</button><button id="bNext" title="下一頁">⏭</button>
+  <div id="bar"><div id="fill"></div><div id="tip" hidden></div></div>
+  <span id="chname"></span><span id="time">0:00 / 0:00</span>
   <button id="bCC" title="字幕">CC</button><button id="bFS" title="全螢幕">⛶</button>
 </div>
 
@@ -788,7 +827,11 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
   });
   const TOTAL = T;
   const bar = document.getElementById('bar');
-  M.slides.forEach(s => { if (s.start > 0) { const i = document.createElement('i'); i.style.left = (s.start / TOTAL * 100) + '%'; bar.appendChild(i); } });
+  const byId = Object.fromEntries(M.slides.map((s, i) => [s.id, Object.assign(s, { idx: i })]));
+  const CH = (M.chapters || []).map(c => ({ ...c, ss: c.slides.map(id => byId[id]) }));
+  CH.forEach(c => { c.start = c.ss[0].start; c.end = c.ss[c.ss.length - 1].start + c.ss[c.ss.length - 1].dur; c.ss.forEach(s => s.ch = c); });
+  CH.forEach(c => { const g = document.createElement('div'); g.className = 'seg'; g.style.left = (c.start / TOTAL * 100) + '%'; g.style.width = ((c.end - c.start) / TOTAL * 100) + '%'; g.style.background = c.color; bar.insertBefore(g, bar.firstChild); });
+  M.slides.forEach(s => { if (s.start > 0) { const i = document.createElement('i'); if (CH.some(c => c.start === s.start)) i.className = 'ch'; i.style.left = (s.start / TOTAL * 100) + '%'; bar.appendChild(i); } });
 
   // ---- render a moment in time
   const chars = { A: document.getElementById('allan'), R: document.getElementById('arale') };
@@ -852,7 +895,36 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
   }
   requestAnimationFrame(frame);
   const go = d => { const k = slideAt(clock), s = M.slides[k]; let n = d < 0 && clock - s.start > 2 ? k : k + d; n = Math.max(0, Math.min(M.slides.length - 1, n)); setClock(M.slides[n].start); };
-  document.getElementById('go').onclick = () => { document.getElementById('start').remove(); play(); };
+  // ---- chapters: start-screen cards, side menu, hover tooltip
+  const startEl = () => document.getElementById('start');
+  function jump(t) { const st = startEl(); if (st) st.remove(); setClock(t); play(); }
+  const chs = document.getElementById('chs');
+  CH.forEach((c, i) => {
+    const b = document.createElement('button'); b.className = 'chcard'; b.style.setProperty('--c', c.color);
+    b.innerHTML = `<span class="k"><i></i>第 ${i + 1} 章・${fmt(c.start)}</span><b>${c.title}</b><span class="s">${c.sub}</span>`;
+    b.onclick = () => jump(c.start); chs.appendChild(b);
+  });
+  const chap = document.getElementById('chap'), chList = document.getElementById('chList'), items = [];
+  CH.forEach((c, i) => {
+    const h = document.createElement('h3'); h.style.setProperty('--c', c.color);
+    h.innerHTML = `<i></i>${i + 1}. ${c.title}<small>${fmt(c.start)}</small>`; h.onclick = () => jump(c.start); chList.appendChild(h);
+    c.ss.forEach(s => {
+      const b = document.createElement('button'); b.className = 'it'; b.style.setProperty('--c', c.color);
+      b.innerHTML = `<span class="n">${s.idx + 1}</span><span class="t">${s.title}</span><span class="tm">${fmt(s.start)}</span>`;
+      b.onclick = () => jump(s.start); chList.appendChild(b); items[s.idx] = b;
+    });
+  });
+  const toggleMenu = open => { chap.hidden = open === undefined ? !chap.hidden : !open; if (!chap.hidden) { const c = items[slideAt(clock)]; c && c.scrollIntoView({ block: 'center' }); } };
+  document.getElementById('bMenu').onclick = () => toggleMenu();
+  document.getElementById('chClose').onclick = () => toggleMenu(false);
+  const tip = document.getElementById('tip');
+  bar.onmousemove = e => { const r = bar.getBoundingClientRect(), x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)), s = M.slides[slideAt(x * TOTAL)];
+    tip.hidden = false; tip.style.left = (x * 100) + '%'; tip.textContent = `${fmt(x * TOTAL)}　${s.ch ? s.ch.title + '｜' : ''}${s.title}`; };
+  bar.onmouseleave = () => { tip.hidden = true; };
+  let lastCur = -1;
+  const chname = document.getElementById('chname');
+  setInterval(() => { const k = slideAt(clock); if (k !== lastCur) { if (items[lastCur]) items[lastCur].classList.remove('cur'); if (items[k]) items[k].classList.add('cur'); lastCur = k; const s = M.slides[k]; chname.textContent = s.ch ? s.ch.title : ''; } }, 250);
+  document.getElementById('go').onclick = () => { startEl().remove(); play(); };
   bPlay.onclick = () => playing ? pause() : play();
   document.getElementById('bPrev').onclick = () => go(-1);
   document.getElementById('bNext').onclick = () => go(1);
@@ -864,6 +936,9 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
     else if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
     else if (e.key === 'c' || e.key === 'C') showCC = !showCC;
     else if (e.key === 'f' || e.key === 'F') document.getElementById('bFS').click();
+    else if (e.key === 'm' || e.key === 'M') toggleMenu();
+    else if (e.key === 'Escape') toggleMenu(false);
+    else if (/^[1-9]$/.test(e.key) && CH[+e.key - 1]) jump(CH[+e.key - 1].start);
   });
   const ctl = document.getElementById('ctl'); let hideT;
   addEventListener('mousemove', () => { ctl.classList.add('show'); clearTimeout(hideT); hideT = setTimeout(() => ctl.classList.remove('show'), 2500); });

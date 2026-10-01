@@ -68,9 +68,10 @@ async def main(force=False):
     def silence(sec):
         track.extend(b"\x00\x00" * int(round(sec * RATE)))
     manifest = {"title": data["title"], "lead": LEAD, "gap": GAP, "tail": TAIL,
-                "speakers": {k: v["name"] for k, v in voices.items()}, "slides": []}
+                "speakers": {k: v["name"] for k, v in voices.items()},
+                "chapters": data.get("chapters", []), "slides": []}
     for s in data["slides"]:
-        ms = {"id": s["id"], "lines": []}
+        ms = {"id": s["id"], "title": s.get("title", s["id"]), "lines": []}
         silence(LEAD)
         for i, (spk, text) in enumerate(s["lines"]):
             mp3 = AUDIO / f"{s['id']}_{i:02d}.mp3"
