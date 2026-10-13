@@ -80,33 +80,21 @@ b.hl{color:var(--red)}
 .spin{animation:spin 8s linear infinite}
 
 /* ---------- characters ---------- */
-.char{position:absolute;bottom:0;width:200px;height:258px;z-index:20}
-#allan{left:8px} #arale{right:8px}
-.char svg{width:200px;height:226px;display:block;overflow:visible}
-.char .name{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);white-space:nowrap;font-weight:900;font-size:16px;padding:3px 12px;border-radius:999px;color:#fff;background:#23395d;box-shadow:0 3px 0 rgba(0,0,0,.18)}
-#arale .name{background:#e53935}
-.char .bob{animation:bob 2.6s ease-in-out infinite}
-.char.talking .bob{animation:bobT .9s ease-in-out infinite}
-#arale.talking .bob{animation:hop .7s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes bobT{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-5px) rotate(-1.5deg)}70%{transform:translateY(-2px) rotate(1.5deg)}}
-@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}}
-.eyes{animation:blink 3.8s infinite}
-#arale .eyes{animation-duration:3.1s}
-@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
-.mouth-o{opacity:0}
-.talking .mouth-o{animation:talkO .3s steps(1,end) infinite}
-.talking .mouth-c{animation:talkC .3s steps(1,end) infinite}
-@keyframes talkO{0%{opacity:1}50%{opacity:0}}
-@keyframes talkC{0%{opacity:0}50%{opacity:1}}
-.arm{transform-box:view-box;transform-origin:150px 200px}
-.talking .arm{animation:wave 1.4s ease-in-out infinite}
-@keyframes wave{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
-#arale .arm{transform-origin:110px 200px}
-#arale.talking .arm{animation:cheer .7s ease-in-out infinite}
-@keyframes cheer{0%,100%{transform:rotate(0)}50%{transform:rotate(8deg)}}
-.char:not(.talking) svg{filter:saturate(.8)}
+.char{position:absolute;bottom:0;width:210px;height:290px;z-index:20}
+#allan{left:6px} #arale{right:6px}
+.char .name{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);white-space:nowrap;font-weight:900;font-size:16px;padding:3px 12px;border-radius:999px;color:#fff;background:#23395d;box-shadow:0 3px 0 rgba(0,0,0,.18);z-index:2}
+#arale .name{background:#0f8a8a}
+.char .bob{position:absolute;left:0;right:0;bottom:0;top:0;transform-origin:50% 100%;animation:bob 2.8s ease-in-out infinite}
+.char.talking .bob{animation:talk .42s ease-in-out infinite}
+#arale.talking .bob{animation:talk .36s ease-in-out infinite}
+.char .bob img{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:none;pointer-events:none;user-select:none}
+.char .bob img.on{display:block}
+.char:not(.talking) .bob img{filter:saturate(.9) brightness(.98)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes talk{0%,100%{transform:translateY(0) scale(1,1)}45%{transform:translateY(-3px) scale(1.012,.988)}}
 .char.talking .name{animation:glow 1.2s ease-in-out infinite}
+body.s24 .char{display:none}
+.fullbody{position:absolute;bottom:40px;filter:drop-shadow(0 10px 14px rgba(31,42,68,.25))}
 
 /* ---------- subtitles ---------- */
 #sub{position:absolute;left:222px;right:222px;bottom:16px;min-height:74px;z-index:25;background:rgba(20,28,58,.88);color:#fff;border-radius:16px;padding:12px 20px 12px 20px;font-size:22px;line-height:1.5;font-weight:700;display:flex;gap:12px;align-items:flex-start}
@@ -298,7 +286,7 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
     </g>
     <!-- 5.37 -->
     <g data-l="4">
-      <line class="a-draw" style="--len:1180" x1="50" y1="452" x2="1230" y2="452" stroke="#3b6fd0" stroke-width="7" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
+      <line class="a-draw" style="--len:810" x1="235" y1="452" x2="1045" y2="452" stroke="#3b6fd0" stroke-width="7" marker-start="url(#ah2)" marker-end="url(#ah2)"/>
     </g>
     <text class="a-pop" data-l="5" x="640" y="500" text-anchor="middle" font-size="30" font-weight="900" fill="#1f2a44">5.37 書面紀錄之運作程序</text>
   </svg>
@@ -707,79 +695,13 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
     <div class="a-up" data-o=".6" style="font-size:34px;font-weight:700;color:var(--muted)">Thank you・我們下次見！</div>
     <div class="a-up" data-o="1.2" style="margin-top:24px;font-size:20px;color:var(--muted)">主講：Allan Lo 講師 ｜ 助教：阿拉蕾</div>
   </div>
-  <div class="abs emo a-pop" data-l="1" style="left:900px;top:330px;font-size:70px"><span class="floaty" style="display:inline-block">🦸‍♀️</span></div>
+  <img class="fullbody a-left" data-l="0" src="assets/char/allan_full.png" alt="Allan Lo 講師" style="left:170px;bottom:112px;height:400px">
+  <img class="fullbody a-right" data-l="1" src="assets/char/arale_full.png" alt="助教 阿拉蕾" style="right:190px;bottom:112px;height:380px">
 </section>
 
 <!-- ================= Characters ================= -->
-<div class="char" id="allan" data-spk="A">
-<svg viewBox="0 0 220 250"><g class="bob">
-  <!-- body -->
-  <path d="M38 252 Q42 186 110 178 Q178 186 182 252Z" fill="#23395d"/>
-  <path d="M90 182 L110 222 L130 182Z" fill="#fff"/>
-  <path d="M104 188 L116 188 L119 197 L110 232 L101 197Z" fill="#d62f3a"/>
-  <path d="M90 182 L110 222 L98 232 L76 190Z" fill="#1a2c4a"/><path d="M130 182 L110 222 L122 232 L144 190Z" fill="#1a2c4a"/>
-  <circle cx="148" cy="214" r="5" fill="#ffd23f"/>
-  <!-- left arm -->
-  <path d="M50 200 Q30 222 44 246" stroke="#23395d" stroke-width="22" fill="none" stroke-linecap="round"/>
-  <!-- right arm with pointer -->
-  <g class="arm"><path d="M168 202 Q196 196 198 168" stroke="#23395d" stroke-width="20" fill="none" stroke-linecap="round"/>
-    <circle cx="198" cy="160" r="11" fill="#ffd9b8"/><line x1="200" y1="154" x2="214" y2="96" stroke="#8a5a2b" stroke-width="5" stroke-linecap="round"/><circle cx="214" cy="94" r="5" fill="#ef4b55"/></g>
-  <rect x="99" y="160" width="22" height="22" fill="#f4c4a0"/>
-  <!-- head -->
-  <circle cx="44" cy="104" r="14" fill="#ffd2ad"/><circle cx="176" cy="104" r="14" fill="#ffd2ad"/>
-  <ellipse cx="110" cy="100" rx="68" ry="66" fill="#ffdcbc"/>
-  <path d="M42 98 Q36 30 110 26 Q186 28 180 98 Q174 66 150 58 Q128 74 96 64 Q70 70 58 78 Q46 86 42 98Z" fill="#2a2a2e"/>
-  <path d="M60 56 Q90 36 120 42" stroke="#55555e" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <path d="M66 86 Q80 79 94 85" stroke="#2a2a2e" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <path d="M126 85 Q140 79 154 86" stroke="#2a2a2e" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <g class="eyes"><ellipse cx="80" cy="104" rx="6" ry="7" fill="#222"/><ellipse cx="140" cy="104" rx="6" ry="7" fill="#222"/>
-    <circle cx="82" cy="101" r="2" fill="#fff"/><circle cx="142" cy="101" r="2" fill="#fff"/></g>
-  <rect x="61" y="90" width="38" height="28" rx="10" fill="rgba(255,255,255,.25)" stroke="#333" stroke-width="3.5"/>
-  <rect x="121" y="90" width="38" height="28" rx="10" fill="rgba(255,255,255,.25)" stroke="#333" stroke-width="3.5"/>
-  <path d="M99 102 Q110 96 121 102" stroke="#333" stroke-width="3" fill="none"/>
-  <ellipse cx="66" cy="128" rx="10" ry="6" fill="#ff9a9a" opacity=".55"/><ellipse cx="154" cy="128" rx="10" ry="6" fill="#ff9a9a" opacity=".55"/>
-  <path d="M106 116 Q110 122 114 116" stroke="#d29a78" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <path class="mouth-c" d="M94 136 Q110 150 126 136" stroke="#7a2e2e" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <g class="mouth-o"><path d="M94 134 Q110 134 126 134 Q124 156 110 157 Q96 156 94 134Z" fill="#7a2e2e"/><path d="M100 148 Q110 142 120 148 Q116 155 110 155 Q104 155 100 148Z" fill="#ff8a8a"/></g>
-</g></svg>
-<div class="name">Allan Lo 講師</div>
-</div>
-
-<div class="char" id="arale" data-spk="R">
-<svg viewBox="0 0 220 250"><g class="bob">
-  <!-- body: overalls -->
-  <path d="M52 252 Q56 190 110 184 Q164 190 168 252Z" fill="#fff"/>
-  <path d="M66 252 L70 206 L150 206 L154 252Z" fill="#3d7be0"/>
-  <path d="M72 206 L80 186 M148 206 L140 186" stroke="#3d7be0" stroke-width="8"/>
-  <rect x="96" y="214" width="28" height="18" rx="4" fill="#2c64c4"/>
-  <!-- arms raised -->
-  <g class="arm"><path d="M60 200 Q30 180 28 148" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="28" cy="142" r="10" fill="#ffe0c4"/>
-    <path d="M160 200 Q190 180 192 148" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="192" cy="142" r="10" fill="#ffe0c4"/></g>
-  <!-- back hair -->
-  <ellipse cx="110" cy="116" rx="76" ry="70" fill="#5b2c83"/>
-  <path d="M40 120 Q38 170 62 176 L62 130Z M180 120 Q182 170 158 176 L158 130Z" fill="#5b2c83"/>
-  <!-- face -->
-  <ellipse cx="110" cy="122" rx="62" ry="58" fill="#ffe0c4"/>
-  <!-- bangs -->
-  <path d="M46 108 Q50 66 110 62 Q170 66 174 108 L160 92 L150 106 L138 88 L126 104 L112 86 L98 104 L86 88 L74 106 L62 92Z" fill="#5b2c83"/>
-  <!-- cap with wings -->
-  <path d="M54 82 Q110 6 166 82 Q110 70 54 82Z" fill="#e53935"/>
-  <path d="M60 80 Q110 68 160 80" stroke="#fff" stroke-width="5" fill="none"/>
-  <path d="M60 62 Q34 40 22 52 Q34 56 30 64 Q42 62 40 72 Q52 66 58 74Z" fill="#fff" stroke="#c9c9c9" stroke-width="1.5"/>
-  <path d="M160 62 Q186 40 198 52 Q186 56 190 64 Q178 62 180 72 Q168 66 162 74Z" fill="#fff" stroke="#c9c9c9" stroke-width="1.5"/>
-  <circle cx="110" cy="40" r="6" fill="#ffd23f"/>
-  <!-- glasses + eyes -->
-  <g class="eyes"><ellipse cx="86" cy="124" rx="7" ry="9" fill="#222"/><ellipse cx="134" cy="124" rx="7" ry="9" fill="#222"/>
-    <circle cx="89" cy="120" r="2.6" fill="#fff"/><circle cx="137" cy="120" r="2.6" fill="#fff"/></g>
-  <circle cx="86" cy="124" r="23" fill="rgba(255,255,255,.28)" stroke="#1d1d1d" stroke-width="5"/>
-  <circle cx="134" cy="124" r="23" fill="rgba(255,255,255,.28)" stroke="#1d1d1d" stroke-width="5"/>
-  <path d="M106 122 Q110 118 114 122" stroke="#1d1d1d" stroke-width="4" fill="none"/>
-  <ellipse cx="66" cy="152" rx="9" ry="5" fill="#ff8fa3" opacity=".6"/><ellipse cx="154" cy="152" rx="9" ry="5" fill="#ff8fa3" opacity=".6"/>
-  <path class="mouth-c" d="M92 156 Q110 172 128 156" stroke="#8a2b2b" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <g class="mouth-o"><path d="M88 152 Q110 154 132 152 Q128 180 110 180 Q92 180 88 152Z" fill="#8a2b2b"/><path d="M96 170 Q110 162 124 170 Q118 178 110 178 Q102 178 96 170Z" fill="#ff8a8a"/></g>
-</g></svg>
-<div class="name">助教 阿拉蕾</div>
-</div>
+<div class="char" id="allan" data-spk="A"><div class="bob"></div><div class="name">Allan Lo 講師</div></div>
+<div class="char" id="arale" data-spk="R"><div class="bob"></div><div class="name">助教 阿拉蕾</div></div>
 
 <div id="sub"></div>
 </div>
@@ -800,6 +722,7 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
 </div>
 
 <script src="manifest.js"></script>
+<script src="assets/char/sprites.js"></script>
 <script>
 (() => {
   const M = window.MANIFEST, stage = document.getElementById('stage');
@@ -833,6 +756,27 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
   CH.forEach(c => { const g = document.createElement('div'); g.className = 'seg'; g.style.left = (c.start / TOTAL * 100) + '%'; g.style.width = ((c.end - c.start) / TOTAL * 100) + '%'; g.style.background = c.color; bar.insertBefore(g, bar.firstChild); });
   M.slides.forEach(s => { if (s.start > 0) { const i = document.createElement('i'); if (CH.some(c => c.start === s.start)) i.className = 'ch'; i.style.left = (s.start / TOTAL * 100) + '%'; bar.appendChild(i); } });
 
+  // ---- character sprites (expressions from the character sheets)
+  const SCALE = { A: 0.8, R: 0.86 };
+  const TALK = {   // 說話：表情 → 交替畫面（嘴巴開合）
+    A: { normal: ['smile', 'talk'], happy: ['smile', 'laugh'], point: ['point'], think: ['think'], surprised: ['surprised', 'talk'], confused: ['confused'], wink: ['wink', 'laugh'] },
+    R: { happy: ['happy', 'surprised'], laugh: ['laugh'], think: ['think'], surprised: ['surprised', 'oh'], confused: ['confused'], present: ['present'], sad: ['sad'], thumbs: ['thumbs'], fist: ['fist'] } };
+  const LISTEN = { A: { smile: 'smile', laugh: 'laugh', wink: 'wink', think: 'think', surprised: 'surprised', confused: 'confused' },
+                   R: { think: 'think', thumbs: 'thumbs', oh: 'oh', surprised: 'surprised', laugh: 'laugh', happy: 'happy', sad: 'sad', confused: 'confused', wink: 'laugh', smile: 'happy', fist: 'fist' } };
+  const DEF = { talk: { A: 'normal', R: 'happy' }, listen: { A: 'smile', R: 'think' } };
+  const PREFIX = { A: 'allan', R: 'arale' };
+  const imgs = { A: {}, R: {} };
+  for (const k of ['A', 'R']) {
+    const box = document.querySelector(`.char[data-spk="${k}"] .bob`);
+    Object.keys(window.SPRITES).filter(n => n.startsWith(PREFIX[k] + '_') && !n.endsWith('_full')).forEach(n => {
+      const [w, h] = window.SPRITES[n], im = new Image();
+      im.src = `assets/char/${n}.png`; im.alt = ''; im.width = Math.round(w * SCALE[k]); im.height = Math.round(h * SCALE[k]);
+      box.appendChild(im); imgs[k][n.slice(PREFIX[k].length + 1)] = im;
+    });
+  }
+  const shownImg = { A: null, R: null };
+  function setFace(k, name) { const im = imgs[k][name] || imgs[k][LISTEN[k][DEF.listen[k]]]; if (shownImg[k] !== im) { if (shownImg[k]) shownImg[k].classList.remove('on'); im.classList.add('on'); shownImg[k] = im; } }
+
   // ---- render a moment in time
   const chars = { A: document.getElementById('allan'), R: document.getElementById('arale') };
   const sub = document.getElementById('sub');
@@ -841,11 +785,23 @@ table.sla td:last-child{border-radius:0 12px 12px 0;width:260px}
   function draw(t) {
     t = Math.max(0, Math.min(TOTAL - 0.001, t));
     const k = slideAt(t), s = M.slides[k];
-    if (k !== cur) { if (cur >= 0) M.slides[cur].el.classList.remove('on'); s.el.classList.add('on'); cur = k; }
+    if (k !== cur) { if (cur >= 0) { M.slides[cur].el.classList.remove('on'); document.body.classList.remove(M.slides[cur].id); } s.el.classList.add('on'); document.body.classList.add(s.id); cur = k; }
     const lt = t - s.start;
     active = null; let shown = null;
     for (const l of s.lines) { if (t >= l.start) shown = l; if (t >= l.start && t < l.start + l.d) active = l; }
     for (const k2 in chars) chars[k2].classList.toggle('talking', !!active && active.s === k2);
+    // 表情：說話者依台詞表情交替嘴型；聆聽者依反應；句間停頓沿用上一句
+    const ref = active || shown;
+    for (const k2 of ['A', 'R']) {
+      if (active && active.s === k2) {
+        const fr = TALK[k2][active.m] || TALK[k2][DEF.talk[k2]];
+        setFace(k2, fr[Math.floor((t - active.start) * 6.5) % fr.length]);
+      } else if (ref && ref.s === k2) {
+        setFace(k2, (TALK[k2][ref.m] || TALK[k2][DEF.talk[k2]])[0]);
+      } else {
+        setFace(k2, LISTEN[k2][ref && ref.lm] || LISTEN[k2][DEF.listen[k2]]);
+      }
+    }
     const key = shown ? shown.f : '';
     if (key !== subKey) { subKey = key; sub.innerHTML = shown ? `<span class="who ${shown.s}">${M.speakers[shown.s]}</span><span>${shown.t}</span>` : ''; }
     sub.classList.toggle('hide', !showCC);

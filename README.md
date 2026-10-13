@@ -8,6 +8,16 @@
 └──────────────── 5.37 書面紀錄之運作程序 ────────────────┘
 ```
 
+## 角色設定
+
+角色圖取自 `assets/ref/` 的人物設定圖，以 `python3 tools/make_sprites.py` 裁切去背為 `assets/char/*.png`：
+
+- **Allan Lo 講師**：8 種表情（微笑、大笑、思考、搔頭、驚訝、指點、眨眼、說話）＋正面全身
+- **助教阿拉蕾**：10 種表情（開心、大笑、思考、驚訝、困惑、喔、介紹、難過、讚、加油）＋揮手全身
+
+每句台詞可指定說話者表情與聆聽者反應（`script.json` 每句的第 3、4 欄，選項見 `moods_help`）。
+說話時以「閉口／開口」兩張表情交替呈現嘴型，結尾頁使用全身圖。
+
 ## 課程結構（24 頁，約 15 分鐘）
 
 | 段落 | 頁 | 內容 |
@@ -65,9 +75,15 @@
 
 ## 修改講稿後重新產生
 
+> 更換人物設定圖：覆蓋 `assets/ref/` 的兩張圖後執行 `python3 tools/make_sprites.py`（格線座標寫在腳本開頭）。
+
+
 ## 修改講稿後重新產生
 
-1. 編輯 `script.json`（`A` = Allan Lo 講師，`R` = 阿拉蕾；每頁的台詞順序對應 `index.html` 中元素的 `data-l` 出場時間）
+> 更換人物設定圖：覆蓋 `assets/ref/` 的兩張圖後執行 `python3 tools/make_sprites.py`（格線座標寫在腳本開頭）。
+
+
+1. 編輯 `script.json`（`A` = Allan Lo 講師，`R` = 阿拉蕾；每句格式 `[說話者, 台詞, 表情, 聆聽者反應]`；台詞順序對應 `index.html` 中元素的 `data-l` 出場時間）
 2. 產生語音與時間軸：`pip install edge-tts && python3 tools/build_tts.py`
    - 講師：`zh-TW-YunJheNeural`（台灣男聲）；阿拉蕾：`zh-TW-HsiaoYuNeural`（調高音調與語速）
 3. 輸出影片：`node tools/render_video.js video 20 4`（需 Playwright + ffmpeg；完成後自動寫入章節標記；`snap` 模式可輸出每頁截圖檢查版面）

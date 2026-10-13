@@ -46,7 +46,7 @@ async def main(force=False):
     voices = data["voices"]
     jobs = []
     for s in data["slides"]:
-        for i, (spk, text) in enumerate(s["lines"]):
+        for i, (spk, text, *_) in enumerate(s["lines"]):
             v = voices[spk]
             key = hashlib.md5(json.dumps([text, v], ensure_ascii=False).encode()).hexdigest()[:8]
             mp3 = AUDIO / f"{s['id']}_{i:02d}.mp3"
@@ -73,14 +73,15 @@ async def main(force=False):
     for s in data["slides"]:
         ms = {"id": s["id"], "title": s.get("title", s["id"]), "lines": []}
         silence(LEAD)
-        for i, (spk, text) in enumerate(s["lines"]):
+        for i, (spk, text, *mood) in enumerate(s["lines"]):
             mp3 = AUDIO / f"{s['id']}_{i:02d}.mp3"
             pcm = to_wav(mp3, WORK / f"{mp3.stem}.wav")
             dur = len(pcm) / 2 / RATE
             track.extend(pcm)
             if i < len(s["lines"]) - 1:
                 silence(GAP)
-            ms["lines"].append({"s": spk, "t": text, "f": f"audio/{mp3.name}", "d": round(dur, 3)})
+            ms["lines"].append({"s": spk, "t": text, "f": f"audio/{mp3.name}", "d": round(dur, 3),
+                                "m": mood[0] if len(mood) > 0 else "", "lm": mood[1] if len(mood) > 1 else ""})
         silence(TAIL)
         manifest["slides"].append(ms)
     with wave.open(str(WORK / "narration.wav"), "wb") as w:
